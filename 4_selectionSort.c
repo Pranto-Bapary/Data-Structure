@@ -21,14 +21,16 @@ void selectionSort(int arr[], int size)
 int main()
 {
     int size, i;
-    printf("Enter the size of the Array: ");
-    scanf("%d", &size);
 
+    printf("Enter the size of the Array : ");
+    scanf("%d", &size);
     int arr[size];
+
+    printf("Enter the elements of the Array : ");
     for (int i = 0; i < size; i++)
         scanf("%d", &arr[i]);
 
-    selectionSort(arr, size);
+    selectionSort(arr, size); // Time Complexity O(n^2)
 
     for (i = 0; i < size; i++)
         printf("%d ", arr[i]);
