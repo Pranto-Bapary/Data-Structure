@@ -30,8 +30,18 @@ int main()
     for (int i = 0; i < size; i++)
         scanf("%d", &arr[i]);
 
-    selectionSort(arr, size); // Time Complexity O(n^2)
+    printf("\n-------------------\n");
+    printf("- Selection Sort  -\n");
+    printf("-------------------\n");
 
+    printf("Before Sorting.....\n");
+    for (i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+
+    selectionSort(arr, size);
+    // Time Complexity O(n^2)
+
+    printf("\nAfter Sorting.....\n");
     for (i = 0; i < size; i++)
         printf("%d ", arr[i]);
     return 0;
