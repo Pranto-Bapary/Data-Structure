@@ -1,5 +1,6 @@
 #include <stdio.h>  //to use printf() scanf()
 #include <stdlib.h> //to Use the exit() function
+
 #define maxSize 5   // Maximum Size of the Stack
 int stack[maxSize]; // Using Array to Implement the Stack
 int top = -1;       // Initially Set -1 that means No Elements Present in the Stack
@@ -24,13 +25,15 @@ void push(int item)
 void pop()
 {
     system("cls");
-    int popItem;
-    if (top == -1)
-        printf("Stack is Empty\n");
+    if (top < 0)
+        printf("Sorry!!!Stack is Empty\n");
     else
+    {
+        int popItem;
         popItem = stack[top];
-    top--;
-    printf("%d is Popped Out Successfully from the Stack\n", popItem);
+        top--;
+        printf("%d is Popped Out Successfully from the Stack\n", popItem);
+    }
 }
 
 // Displays the top most Item
@@ -38,7 +41,10 @@ void pop()
 void peek()
 {
     system("cls");
-    printf("%d is the Peek Item\n", stack[top]);
+    if (top < 0)
+        printf("Sorry!!!There is no Peek Item in the Stack\n");
+    else
+        printf("%d is the Peek Item\n", stack[top]);
 }
 
 // Display Items in the Stack
@@ -46,11 +52,16 @@ void peek()
 void display()
 {
     system("cls");
-    int i;
-    printf("Items Present in the Stack: \n");
-    for (i = top; i >= 0; i--)
-        printf("%d\n", stack[i]);
-    printf("\n");
+    if (top < 0)
+        printf("Sorry!!!There is no Items to Display\n");
+    else
+    {
+        int i;
+        printf("Items Present in the Stack: \n");
+        for (i = top; i >= 0; i--)
+            printf("%d\n", stack[i]);
+        printf("\n");
+    }
 }
 
 int main()
@@ -58,11 +69,14 @@ int main()
     int choice;
     do
     {
-        printf("What Do You Want?\n");
+        printf("------------------------\n");
+        printf("- Stack Implementation -\n");
+        printf("------------------------\n");
+
         printf("1. Push Item in the Stack\n");
-        printf("2. Pop Item in the Stack\n");
-        printf("3. Peek Items in the Stack\n");
-        printf("4. Display Items in the Stack\n");
+        printf("2. Pop Item from the Stack\n");
+        printf("3. Peek Item in the Stack\n");
+        printf("4. Display Items from the Stack\n");
         printf("5. Exit\n");
 
         printf("Enter Your Choice: ");
@@ -70,39 +84,41 @@ int main()
 
         switch (choice)
         {
-        case 1:
-        {
-            int item;
-            printf("Enter the Item You Want to Push: ");
-            scanf("%d", &item);
-            push(item);
-            break;
-        }
+            case 1:
+            {
+                int item;
+                printf("Enter the Item You Want to Push: ");
+                scanf("%d", &item);
+                
+                push(item);
+                break;
+            }
 
-        case 2:
-        {
-            pop();
-            break;
-        }
+            case 2:
+            {
+                pop();
+                break;
+            }
 
-        case 3:
-        {
-            peek();
-            break;
-        }
+            case 3:
+            {
+                peek();
+                break;
+            }
 
-        case 4:
-        {
-            display();
-            break;
-        }
+            case 4:
+            {
+                display();
+                break;
+            }
 
-        case 5:
-            exit(1);
+            case 5:
+                exit(1);
 
-        default:
-            printf("Invalid Choice\n");
+            default:
+                printf("Invalid Choice\n");
         }
     } while (choice != 5);
+
     return 0;
 }
