@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
-#define maxSize 30
+#define maxSize 50
 
 int stack[maxSize];
 int top = -1;
@@ -21,14 +21,18 @@ char pop()
 
 int priority(char item)
 {
-    if (item == '(')
-        return 0;
+
+    if (item == '^')
+        return 3;
 
     else if (item == '/' || item == '*')
         return 2;
 
     else if (item == '+' || item == '-')
         return 1;
+
+    else if (item == '(')
+        return 0;
 
     else
         return 0;
